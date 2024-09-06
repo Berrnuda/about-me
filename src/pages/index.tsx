@@ -1,6 +1,6 @@
 import Header from "@/components/header";
 import Education from "@/components/sections/Education";
-import Experience from "@/components/sections/Experience";
+// import Experience from "@/components/sections/Experience";
 import Introduction from "@/components/sections/Introduction";
 import Portfolio from "@/components/sections/Portfolio";
 import Projects from "@/components/sections/Projects";
@@ -12,7 +12,7 @@ export default function Home() {
 
   const introductionRef = useRef<HTMLDivElement | null>(null);
   const skillsRef = useRef<HTMLDivElement | null>(null);
-  const experienceRef = useRef<HTMLDivElement | null>(null);
+  // const experienceRef = useRef<HTMLDivElement | null>(null);
   const projectsRef = useRef<HTMLDivElement | null>(null);
   const portfolioRef = useRef<HTMLDivElement | null>(null);
   const educationRef = useRef<HTMLDivElement | null>(null);
@@ -20,7 +20,7 @@ export default function Home() {
   const sectionRefs = [
     { id: "introduction", ref: introductionRef },
     { id: "skills", ref: skillsRef },
-    { id: "experience", ref: experienceRef },
+    // { id: "experience", ref: experienceRef },
     { id: "projects", ref: projectsRef },
     { id: "portfolio", ref: portfolioRef },
     { id: "education", ref: educationRef },
@@ -67,7 +67,7 @@ export default function Home() {
       <main className="pt-60 md:px-160 lg:px-350">
         <Introduction ref={introductionRef} />
         <Skills ref={skillsRef} />
-        <Experience ref={experienceRef} />
+        {/* <Experience ref={experienceRef} /> */}
         <Projects ref={projectsRef} />
         <Portfolio ref={portfolioRef} />
         <Education ref={educationRef} />
