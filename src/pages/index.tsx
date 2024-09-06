@@ -1,4 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import Header from "@/components/header";
+import Education from "@/components/sections/Education";
+import Experience from "@/components/sections/Experience";
+import Introduction from "@/components/sections/Introduction";
+import Portfolio from "@/components/sections/Portfolio";
+import Projects from "@/components/sections/Projects";
+import Skills from "@/components/sections/Skills";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -51,49 +58,19 @@ export default function Home() {
 
   return (
     <div>
-      <header className="fixed top-0 flex h-60 w-full items-center justify-around bg-bg-secondary px-30">
-        {sectionRefs.map((section) => (
-          <button
-            key={section.id}
-            onClick={() => handleScrollToSection(section.id)}
-            className={`text-lg font-semibold ${
-              activeSection === section.id ? "text-text-primary" : "text-text-secondary"
-            }`}
-          >
-            {section.id === "introduction" && "자기소개"}
-            {section.id === "skills" && "기술스택"}
-            {section.id === "experience" && "경력"}
-            {section.id === "projects" && "프로젝트"}
-            {section.id === "portfolio" && "포트폴리오"}
-            {section.id === "education" && "교육"}
-          </button>
-        ))}
-      </header>
+      <Header
+        activeSection={activeSection}
+        sectionRefs={sectionRefs}
+        handleScrollToSection={handleScrollToSection}
+      />
 
       <main className="pt-60">
-        <div id="introduction" ref={introductionRef} className="h-screen scroll-mt-60 border-b p-8">
-          <h2 className="text-2xl font-semibold">자기소개</h2>
-        </div>
-
-        <div id="skills" ref={skillsRef} className="h-screen scroll-mt-60 border-b p-8">
-          <h2 className="text-2xl font-semibold">기술스택</h2>
-        </div>
-
-        <div id="experience" ref={experienceRef} className="h-screen scroll-mt-60 border-b p-8">
-          <h2 className="text-2xl font-semibold">경력</h2>
-        </div>
-
-        <div id="projects" ref={projectsRef} className="h-screen scroll-mt-60 border-b p-8">
-          <h2 className="text-2xl font-semibold">프로젝트</h2>
-        </div>
-
-        <div id="portfolio" ref={portfolioRef} className="h-screen scroll-mt-60 border-b p-8">
-          <h2 className="text-2xl font-semibold">포트폴리오</h2>
-        </div>
-
-        <div id="education" ref={educationRef} className="h-screen scroll-mt-60 p-8">
-          <h2 className="text-2xl font-semibold">교육</h2>
-        </div>
+        <Introduction ref={introductionRef} />
+        <Skills ref={skillsRef} />
+        <Experience ref={experienceRef} />
+        <Projects ref={projectsRef} />
+        <Portfolio ref={portfolioRef} />
+        <Education ref={educationRef} />
       </main>
     </div>
   );
