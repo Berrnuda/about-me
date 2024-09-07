@@ -21,9 +21,15 @@ function Introduction(props: any, ref: React.ForwardedRef<HTMLDivElement>) {
           </div>
           <div className="flex flex-col justify-center gap-24">
             <div className="flex gap-12">
-              <Link href="https://github.com/Berrnuda">Github</Link>
-              <Link href="https://linktr.ee/Berrnuda">Linktree</Link>
-              <Link href="https://velog.io/@berrnuda">Velog</Link>
+              <Link href="https://github.com/Berrnuda" target="_blank">
+                Github
+              </Link>
+              <Link href="https://linktr.ee/Berrnuda" target="_blank">
+                Linktree
+              </Link>
+              <Link href="https://velog.io/@berrnuda" target="_blank">
+                Velog
+              </Link>
             </div>
             <p>MBTI: ISTP</p>
             <p>Tel: +82 10-8072-4389</p>
