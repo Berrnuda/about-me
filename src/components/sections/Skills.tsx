@@ -43,7 +43,7 @@ function Skills(props: any, ref: React.Ref<HTMLDivElement>) {
       <h2 className="text-2xl font-semibold">기술스택</h2>
       <div className="mt-40 flex flex-wrap gap-12">
         {skillList.map((skill) => (
-          <div key={skill}>{skillComponents[skill] || <span>{skill}</span>}</div>
+          <div key={skill}>{skillComponents[skill]}</div>
         ))}
       </div>
     </div>

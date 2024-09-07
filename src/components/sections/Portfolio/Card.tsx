@@ -69,7 +69,11 @@ export default function PortfolioCard({
       <div className="flex flex-1 flex-col gap-4">
         <p className="xl:text-2xl text-xl font-semibold md:text-xl">{title}</p>
         <p className="xl:text-xl text-sm md:text-base">{description}</p>
-        <div className="flex flex-wrap gap-4">{skills.map((skill) => skillComponents[skill])}</div>
+        <div className="flex flex-wrap gap-4">
+          {skills.map((skill) => (
+            <div key={skill}>{skillComponents[skill]}</div>
+          ))}
+        </div>
       </div>
       <p className="text-gray-500 xl:text-base mt-4 text-xs md:text-sm">{day}</p>
     </div>
