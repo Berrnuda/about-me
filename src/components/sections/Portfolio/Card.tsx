@@ -58,16 +58,20 @@ export default function PortfolioCard({
 }) {
   return (
     <div
-      className="flex h-450 w-400 flex-col gap-12 rounded-2xl border border-text-secondary bg-bg-secondary pb-12"
+      className="flex min-h-[350px] flex-col gap-4 rounded-2xl border border-text-secondary bg-bg-secondary p-4 md:p-6 lg:p-8"
       onClick={onClick}
     >
-      <Image src={icon} alt={`${title} icon`} className="h-200 w-full" />
-      <div className="flex flex-1 flex-col gap-8 p-8">
-        <p className="text-2xl">{title}</p>
-        <p>{description}</p>
-        <div className="flex flex-wrap gap-8">{skills.map((skill) => skillComponents[skill])}</div>
+      <Image
+        src={icon}
+        alt={`${title} icon`}
+        className="h-150 w-full rounded-t-2xl object-cover md:h-180 lg:h-210"
+      />
+      <div className="flex flex-1 flex-col gap-4">
+        <p className="text-lg font-semibold md:text-xl lg:text-2xl">{title}</p>
+        <p className="text-sm md:text-base lg:text-lg">{description}</p>
+        <div className="flex flex-wrap gap-4">{skills.map((skill) => skillComponents[skill])}</div>
       </div>
-      <p className="px-8">{day}</p>
+      <p className="text-gray-500 mt-4 text-xs md:text-sm lg:text-base">{day}</p>
     </div>
   );
 }
