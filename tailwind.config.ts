@@ -11,7 +11,8 @@ const config: Config = {
   theme: {
     screens: {
       md: { min: "744px" },
-      lg: { min: "1200px" },
+      lg: { min: "1024px" },
+      xl: { min: "1280px" },
     },
     colors: {
       bg: {

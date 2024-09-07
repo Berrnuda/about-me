@@ -11,7 +11,7 @@ export default function Header({ activeSection, sectionRefs, handleScrollToSecti
         <button
           key={section.id}
           onClick={() => handleScrollToSection(section.id)}
-          className={`text-sm font-semibold md:text-lg ${
+          className={`text-sm font-semibold md:text-xl ${
             activeSection === section.id ? "text-text-primary" : "text-text-secondary"
           }`}
         >

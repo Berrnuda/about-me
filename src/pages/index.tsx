@@ -64,7 +64,7 @@ export default function Home() {
         handleScrollToSection={handleScrollToSection}
       />
 
-      <main className="pt-60 md:px-160 lg:px-350">
+      <main className="xl:px-350 pt-60 md:px-160 lg:px-240">
         <Introduction ref={introductionRef} />
         <Skills ref={skillsRef} />
         {/* <Experience ref={experienceRef} /> */}

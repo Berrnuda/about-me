@@ -24,9 +24,9 @@ function Portfolio(props: any, ref: React.Ref<HTMLDivElement>) {
   };
 
   return (
-    <div id="portfolio" ref={ref} className="min-h-screen scroll-mt-60 border-b p-4 md:p-8 lg:p-12">
-      <h2 className="text-xl font-semibold md:text-2xl lg:text-3xl">포트폴리오</h2>
-      <div className="mt-10 grid gap-8 md:mt-20 md:grid-cols-2 lg:mt-40 lg:grid-cols-3">
+    <div id="portfolio" ref={ref} className="xl:p-12 min-h-screen scroll-mt-60 border-b p-4 md:p-8">
+      <h2 className="xl:text-3xl text-xl font-semibold md:text-2xl">포트폴리오</h2>
+      <div className="xl:mt-40 xl:grid-cols-3 mt-10 grid gap-8 md:mt-20 md:grid-cols-2">
         <PortfolioCard
           icon={OpenMindIcon}
           title="오픈마인드"
