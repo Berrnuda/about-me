@@ -17,6 +17,9 @@ const config: Config = {
       bg: {
         primary: "#111111",
         secondary: "#1A1A1A",
+        blue: "#183347",
+        purple: "#412454",
+        pink: "#5d1715",
       },
       text: {
         primary: "#F8FAFC",

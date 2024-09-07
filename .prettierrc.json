@@ -1,24 +1,22 @@
 {
-    "printWidth": 100,
-    "trailingComma": "es5",
-    "tabWidth": 2,
-    "useTabs": false,
-    "semi": true,
-    "singleQuote": false,
-    "importOrder": [
-      "^react",
-      "<THIRD_PARTY_MODULES>",
-      "^@components/",
-      "^@hooks/",
-      "^@utils/",
-      "^@styles/",
-      "^@images/",
-      "^@icons/",
-      "^[./]"
-    ],
-    "importOrderSortSpecifiers": true,
-    "plugins": [
-      "prettier-plugin-tailwindcss"
-    ]
-  }
-  
+  "printWidth": 100,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": false,
+  "importOrder": [
+    "^react",
+    "<THIRD_PARTY_MODULES>",
+    "^@components/",
+    "^@store/",
+    "^@hooks/",
+    "^@utils/",
+    "^@styles/",
+    "^@images/",
+    "^@icons/",
+    "^[./]"
+  ],
+  "importOrderSortSpecifiers": true,
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
