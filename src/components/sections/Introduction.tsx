@@ -7,7 +7,7 @@ function Introduction(props: any, ref: React.ForwardedRef<HTMLDivElement>) {
   return (
     <div id="introduction" ref={ref} className="h-screen scroll-mt-60 p-8">
       <div className="flex flex-col items-center gap-24">
-        <div className="flex w-full justify-around">
+        <div className="flex w-full justify-around gap-12 md:gap-0">
           <div className="flex flex-col items-center gap-12">
             <Image
               src={Profile}
