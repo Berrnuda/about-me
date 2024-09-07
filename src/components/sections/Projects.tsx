@@ -9,7 +9,11 @@ import Link from "next/link";
 
 function Projects(props: any, ref: React.Ref<HTMLDivElement>) {
   return (
-    <div id="projects" ref={ref} className="h-screen scroll-mt-60 border-b p-8">
+    <div
+      id="projects"
+      ref={ref}
+      className="h-screen scroll-mt-59 border-t border-b-text-secondary p-8"
+    >
       <h2 className="text-2xl font-semibold">프로젝트</h2>
       <div className="mt-40 grid grid-cols-1 gap-16">
         <div className="grid grid-cols-2 items-center gap-8">

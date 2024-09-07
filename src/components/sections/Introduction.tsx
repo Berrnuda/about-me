@@ -5,11 +5,7 @@ import Link from "next/link";
 
 function Introduction(props: any, ref: React.ForwardedRef<HTMLDivElement>) {
   return (
-    <div
-      id="introduction"
-      ref={ref}
-      className="h-screen scroll-mt-60 border-b border-b-text-secondary p-8"
-    >
+    <div id="introduction" ref={ref} className="h-screen scroll-mt-60 p-8">
       <div className="flex flex-col items-center gap-24">
         <div className="flex w-full justify-around">
           <div className="flex flex-col items-center gap-12">

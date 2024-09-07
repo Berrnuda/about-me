@@ -2,7 +2,11 @@ import React, { forwardRef } from "react";
 
 function Education(props: any, ref: React.Ref<HTMLDivElement>) {
   return (
-    <div id="education" ref={ref} className="h-screen scroll-mt-60 p-8">
+    <div
+      id="education"
+      ref={ref}
+      className="h-screen scroll-mt-59 border-t border-b-text-secondary p-8"
+    >
       <h2 className="text-2xl font-semibold">교육</h2>
       <div className="mt-40 flex flex-col gap-8">
         <p className="text-2xl">코드잇</p>

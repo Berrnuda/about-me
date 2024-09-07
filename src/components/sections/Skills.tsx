@@ -17,7 +17,11 @@ function Skills(props: any, ref: React.Ref<HTMLDivElement>) {
   ];
 
   return (
-    <div id="skills" ref={ref} className="h-screen scroll-mt-60 border-b p-8">
+    <div
+      id="skills"
+      ref={ref}
+      className="h-screen scroll-mt-59 border-t border-b-text-secondary p-8"
+    >
       <h2 className="text-2xl font-semibold">기술스택</h2>
       <div className="mt-40 flex flex-wrap gap-12">
         {skillList.map((skill) => (
