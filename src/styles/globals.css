@@ -15,3 +15,53 @@ body {
   color: #fff;
   font-family: "HancomSans-Light";
 }
+
+html {
+  scrollbar-width: thin; /* 파이어폭스 */
+  scrollbar-color: rgba(255, 192, 120, 0) transparent; /* 파이어폭스 */
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 192, 120, 0);
+  border-radius: 14px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+html:hover::-webkit-scrollbar-thumb,
+html:active::-webkit-scrollbar-thumb {
+  background-color: #6f7277;
+}
+
+/* 파이어폭스를 위한 추가 스타일 */
+html:hover,
+html:active {
+  scrollbar-color: #6f7277 transparent;
+}
+
+@layer components {
+  .modal-overlay {
+    @apply fixed left-0 top-0 z-20 h-full w-full bg-[#00000050];
+  }
+
+  .modal-container-base {
+    @apply fixed z-30 rounded-12 bg-[#1A1A1A];
+  }
+
+  .modal-container {
+    @apply left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .modal-container-mobile {
+    @apply bottom-0 left-1/2 w-full -translate-x-1/2;
+  }
+}
