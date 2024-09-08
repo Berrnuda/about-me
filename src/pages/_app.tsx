@@ -14,6 +14,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:site_name" content="About-Bermuda" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://about-bermuda.vercel.app/" />
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_SITE_URL}/images/Profile.jpg`}
+        />
+
         <meta property="og:description" content="나에 대해서 소개합니다." />
       </Head>
       <ModalWrapper />
