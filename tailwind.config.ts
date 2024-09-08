@@ -45,7 +45,7 @@ const config: Config = {
         ".modal-close-icon": {
           position: "absolute",
           right: "16px",
-          top: "16px",
+          // top: "16px",
           marginLeft: "auto",
           cursor: "pointer",
         },
