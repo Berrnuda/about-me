@@ -1,7 +1,11 @@
+import useMediaQuery from "@/hooks/useMediaQuery";
+import { useModalStore } from "@/store/useModalStore";
 import React, { useState, useEffect } from "react";
 
 export default function ScrollProgressBar() {
   const [width, setWidth] = useState(0);
+  const { isMobile } = useMediaQuery();
+  const { modalType } = useModalStore();
 
   const handleScroll = () => {
     const element = document.documentElement;
@@ -17,9 +21,11 @@ export default function ScrollProgressBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  if (modalType && isMobile) return null;
+
   return (
     <div
-      className="fixed left-0 top-0 z-[50] h-2"
+      className="fixed left-0 top-0 z-[25] h-2"
       style={{
         width: `${width}%`,
         borderRadius: `0px 2px 0px 0px`,
