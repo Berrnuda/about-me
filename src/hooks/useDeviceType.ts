@@ -5,7 +5,6 @@ export default function useDeviceType() {
 
   useEffect(() => {
     const userAgent = navigator.userAgent.toLowerCase();
-    console.log(userAgent);
 
     if (userAgent.indexOf("android") > -1) {
       setDeviceType("android");
