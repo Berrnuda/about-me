@@ -1,4 +1,6 @@
+import useBrowserDetect from "@/hooks/useBrowserDetect";
 import useDeviceType from "@/hooks/useDeviceType";
+import useMediaQuery from "@/hooks/useMediaQuery";
 import { IconClose } from "@/utils/icon";
 import classNames from "classnames";
 
@@ -9,16 +11,18 @@ interface CustomModalProps {
 }
 
 export default function CustomModal({ content, closeIcon = false, onClose }: CustomModalProps) {
+  const { isMobile } = useMediaQuery();
   const deviceType = useDeviceType();
+  const browser = useBrowserDetect();
 
   const closeIconClassNames = classNames(
-    "modal-close-icon",
-    deviceType === "iPhone" ? "top-100" : "top-16"
+    "modal",
+    isMobile && deviceType === "iPhone" && browser === "Safari" ? "mt-80" : ""
   );
 
   return (
-    <div className="modal">
-      {closeIcon && <IconClose className={closeIconClassNames} onClick={onClose} />}
+    <div className={closeIconClassNames}>
+      {closeIcon && <IconClose className="modal-close-icon" onClick={onClose} />}
       {content}
     </div>
   );
