@@ -54,14 +54,14 @@ html:active {
   }
 
   .modal-container-base {
-    @apply fixed z-30 rounded-12 bg-[#1A1A1A];
+    @apply fixed z-30 overflow-y-auto rounded-12 bg-[#1A1A1A];
   }
 
   .modal-container {
-    @apply left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+    @apply left-1/2 top-1/2 max-h-[90vh] -translate-x-1/2 -translate-y-1/2;
   }
 
   .modal-container-mobile {
-    @apply bottom-0 left-1/2 w-full -translate-x-1/2;
+    @apply bottom-0 left-1/2 max-h-screen w-full -translate-x-1/2 overflow-x-hidden;
   }
 }

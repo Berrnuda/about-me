@@ -31,14 +31,14 @@ export default function LinkPreview({ url }: { url: string }) {
     <Link
       href={url}
       target="_blank"
-      className="flex h-full w-280 justify-between gap-6 rounded-4 border border-text-secondary"
+      className="flex h-60 w-280 justify-between gap-6 rounded-4 border border-text-secondary"
     >
-      <div className="flex h-full flex-col p-4">
+      <div className="flex h-50 flex-col overflow-y-hidden p-4">
         <h3 className="font-bold">{preview.title}</h3>
         {/* <p className="text-sm">{preview.description}</p> */}
         {/* <p className="text-sm text-text-secondary">{preview.url}</p> */}
       </div>
-      <img src={preview.image ?? Profile} alt={preview.title} className="h-50 w-100 object-cover" />
+      <img src={preview.image ?? Profile} alt={preview.title} className="h-58 w-100 object-cover" />
     </Link>
   );
 }

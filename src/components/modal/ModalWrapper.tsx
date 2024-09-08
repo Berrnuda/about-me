@@ -11,9 +11,15 @@ export default function ModalWrapper() {
   useEffect(() => {
     if (modalType && ModalComponent) {
       setIsVisible(true);
+      document.body.style.overflow = "hidden";
     } else {
       setIsVisible(false);
+      document.body.style.overflow = "auto";
     }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [modalType, ModalComponent]);
 
   if (!modalType || !ModalComponent) return null;
@@ -26,7 +32,7 @@ export default function ModalWrapper() {
   const modalClass = classNames(
     "modal-container-base transition-transform",
     isMobile
-      ? `modal-container-mobile duration-500 flex justify-center ${isVisible ? `-translate-y-0` : `translate-y-300`}`
+      ? `modal-container-mobile duration-1000 flex justify-center ${isVisible ? `-translate-y-0` : `translate-y-full`}`
       : `modal-container duration-500 ease-in-out ${isVisible ? `scale-1` : `scale-0`}`
   );
 
