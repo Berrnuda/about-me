@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import ScrollProgressBar from "@/components/header/ScrollProgressBar";
 import Education from "@/components/sections/Education";
 // import Experience from "@/components/sections/Experience";
 import Introduction from "@/components/sections/Introduction";
@@ -58,13 +59,14 @@ export default function Home() {
 
   return (
     <div>
+      <ScrollProgressBar />
       <Header
         activeSection={activeSection}
         sectionRefs={sectionRefs}
         handleScrollToSection={handleScrollToSection}
       />
 
-      <main className="xl:px-350 pt-60 md:px-160 lg:px-240">
+      <main className="pt-60 md:px-160 lg:px-240 xl:px-350">
         <Introduction ref={introductionRef} />
         <Skills ref={skillsRef} />
         {/* <Experience ref={experienceRef} /> */}
