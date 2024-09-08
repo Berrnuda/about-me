@@ -16,35 +16,40 @@ body {
   font-family: "HancomSans-Light";
 }
 
+.modal-overlay,
 html {
   scrollbar-width: thin; /* 파이어폭스 */
   scrollbar-color: rgba(255, 192, 120, 0) transparent; /* 파이어폭스 */
 }
 
-html::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-html::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: rgba(255, 192, 120, 0);
   border-radius: 14px;
   transition: background-color 0.3s ease-in-out;
 }
 
-html::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 10px;
 }
 
 html:hover::-webkit-scrollbar-thumb,
-html:active::-webkit-scrollbar-thumb {
+html:active::-webkit-scrollbar-thumb,
+.modal-container:hover::-webkit-scrollbar-thumb,
+.modal-container:active::-webkit-scrollbar-thumb {
   background-color: #6f7277;
 }
 
 /* 파이어폭스를 위한 추가 스타일 */
 html:hover,
-html:active {
+html:active,
+.modal-container:hover,
+.modal-container:active {
   scrollbar-color: #6f7277 transparent;
 }
 

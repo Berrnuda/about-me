@@ -27,10 +27,10 @@ function Portfolio(props: any, ref: React.Ref<HTMLDivElement>) {
     <div
       id="portfolio"
       ref={ref}
-      className="xl:p-12 xl:mb-0 mb-60 min-h-screen scroll-mt-59 border-t border-b-text-secondary p-4 md:p-8"
+      className="mb-60 min-h-screen scroll-mt-59 border-t border-b-text-secondary p-4 md:p-8 xl:mb-0 xl:p-12"
     >
-      <h2 className="xl:text-3xl text-xl font-semibold md:text-2xl">포트폴리오</h2>
-      <div className="xl:mt-40 xl:grid-cols-3 mt-10 grid gap-8 md:mt-20 md:grid-cols-2">
+      <h2 className="text-xl font-semibold md:text-2xl xl:text-3xl">포트폴리오</h2>
+      <div className="mt-10 grid gap-6 md:mt-20 md:grid-cols-2 xl:mt-40 xl:grid-cols-3">
         <PortfolioCard
           icon={OpenMindIcon}
           title="오픈마인드"

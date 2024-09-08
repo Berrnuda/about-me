@@ -12,13 +12,16 @@ export default function ModalWrapper() {
     if (modalType && ModalComponent) {
       setIsVisible(true);
       document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
     } else {
       setIsVisible(false);
       document.body.style.overflow = "auto";
+      document.body.style.touchAction = "auto";
     }
 
     return () => {
       document.body.style.overflow = "auto";
+      document.body.style.touchAction = "auto";
     };
   }, [modalType, ModalComponent]);
 
