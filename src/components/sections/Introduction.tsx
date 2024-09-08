@@ -8,7 +8,7 @@ function Introduction(props: any, ref: React.ForwardedRef<HTMLDivElement>) {
     <div id="introduction" ref={ref} className="h-screen scroll-mt-60 p-8">
       <div className="flex flex-col items-center gap-24">
         <div className="flex w-full justify-around gap-12 md:gap-0">
-          <div className="flex flex-col items-center gap-12">
+          <div className="flex flex-col items-center gap-2 md:gap-12">
             <Image
               src={Profile}
               alt="Profile"
@@ -16,8 +16,8 @@ function Introduction(props: any, ref: React.ForwardedRef<HTMLDivElement>) {
               height={128}
               className="rounded-full py-20"
             />
-            <p className="text-3xl font-bold">김제완</p>
-            <p className="text-xl">프론트엔드 개발자</p>
+            <p className="text-xl font-bold md:text-3xl">김제완</p>
+            <p className="text-sm md:text-xl">프론트엔드 개발자</p>
           </div>
           <div className="flex flex-col justify-center gap-24">
             <div className="flex gap-12">
@@ -31,9 +31,9 @@ function Introduction(props: any, ref: React.ForwardedRef<HTMLDivElement>) {
                 Velog
               </Link>
             </div>
-            <p>MBTI: ISTP</p>
-            <p>Tel: +82 10-8072-4389</p>
-            <p>e-Mail: jeeee_in@naver.com</p>
+            <p className="text-sm md:text-base">MBTI: ISTP</p>
+            <p className="text-sm md:text-base">Tel: +82 10-8072-4389</p>
+            <p className="text-sm md:text-base">e-Mail: jeeee_in@naver.com</p>
           </div>
         </div>
         <p>
