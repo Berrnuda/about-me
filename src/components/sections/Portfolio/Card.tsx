@@ -11,6 +11,7 @@ import SkillZustand from "@/components/skill/Zustand";
 import SkillCss from "@/components/skill/Css";
 import SkillStoryBook from "@/components/skill/StoryBook";
 import SkillClassNames from "@/components/skill/ClassNames";
+import { motion } from "framer-motion";
 
 const skillComponents: { [key: string]: JSX.Element } = {
   React: <SkillReact />,
@@ -57,8 +58,10 @@ export default function PortfolioCard({
   day: string;
 }) {
   return (
-    <div
-      className="flex min-h-[350px] flex-col gap-4 rounded-2xl border border-text-secondary bg-bg-secondary p-4 md:p-6 xl:p-8"
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.2 }}
+      className="flex min-h-[350px] cursor-pointer flex-col gap-4 rounded-2xl border border-text-secondary bg-bg-secondary p-4 md:p-6 xl:p-8"
       onClick={onClick}
     >
       <Image
@@ -76,6 +79,6 @@ export default function PortfolioCard({
         </div>
       </div>
       <p className="text-gray-500 mt-4 text-xs md:text-sm xl:text-base">{day}</p>
-    </div>
+    </motion.div>
   );
 }
