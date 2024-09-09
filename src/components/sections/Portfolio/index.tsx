@@ -1,5 +1,5 @@
 import { useModalStore } from "@/store/useModalStore";
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect } from "react";
 import PortfolioCard from "./Card";
 import OpenMindIcon from "/public/images/Image3.png";
 import ArbabaIcon from "/public/images/arbaba.png";
@@ -7,9 +7,12 @@ import TemagotchiIcon from "/public/images/Temagotchi.ico";
 import TemagotchiModal from "@/components/modal/TemagotchiModal";
 import OpenMindModal from "@/components/modal/OpenMindModal";
 import ArbabaModal from "@/components/modal/ArbabaModal";
+import { useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
 
 function Portfolio(props: any, ref: React.Ref<HTMLDivElement>) {
   const { openModal } = useModalStore();
+  const queryClient = useQueryClient();
 
   const ModalOpenMind = () => {
     openModal("OpenMind", OpenMindModal, {});
@@ -22,6 +25,38 @@ function Portfolio(props: any, ref: React.Ref<HTMLDivElement>) {
   const ModalTemagotchiMind = () => {
     openModal("OpenMind", TemagotchiModal, {});
   };
+
+  const urls = [
+    "https://github.com/12Team-Project/git12Team",
+    "https://broken-princess-732.notion.site/12-47d7f99cca2d45edbdb711cedfec0f42?pvs=74",
+    "https://open-mind-12team.netlify.app",
+    "https://github.com/sprint6-team12/arbaba-40owners",
+    "https://tan-maize-34b.notion.site/part3-12-2e36b18474754374ba9640bd24dac669?pvs=74",
+    "https://the-julge-6-12.vercel.app",
+    "https://github.com/Codeit-Sprint-6th-Part-4-Team-6/Teamagotchi",
+    "https://copper-garlic-708.notion.site/4-6-1a606fabfbf64b7194551d0321f984eb?pvs=74",
+    "https://teamagotchi.netlify.app",
+  ];
+
+  const fetchPreview = async (url: string) => {
+    try {
+      const response = await axios.get(`/api/preview?url=${encodeURIComponent(url)}`);
+      const data = await response.data;
+      return data;
+    } catch (error) {
+      console.error("Failed to fetch preview", error);
+    }
+  };
+
+  useEffect(() => {
+    urls.forEach((url) => {
+      queryClient.prefetchQuery({
+        queryKey: ["linkPreview", url],
+        queryFn: () => fetchPreview(url),
+        staleTime: Infinity,
+      });
+    });
+  });
 
   return (
     <div
