@@ -6,7 +6,7 @@ type HeaderProps = {
 
 export default function Header({ activeSection, sectionRefs, handleScrollToSection }: HeaderProps) {
   return (
-    <header className="fixed top-0 flex h-60 w-full items-center justify-around bg-bg-secondary px-30">
+    <header className="fixed top-0 z-20 flex h-60 w-full items-center justify-around bg-bg-secondary px-30">
       {sectionRefs.map((section) => (
         <button
           key={section.id}
