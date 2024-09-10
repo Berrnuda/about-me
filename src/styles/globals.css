@@ -55,7 +55,7 @@ html:active,
 
 @layer components {
   .modal-overlay {
-    @apply fixed left-0 top-0 z-20 h-full w-full bg-[#00000050];
+    @apply fixed left-0 top-0 z-30 h-full w-full bg-[#00000050];
   }
 
   .modal-container-base {
