@@ -1,7 +1,6 @@
 import ModalWrapper from "@/components/modal/ModalWrapper";
 import "@/styles/globals.css";
 import { HydrationBoundary, QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
@@ -40,7 +39,6 @@ export default function App({ Component, pageProps }: AppProps) {
           <ModalWrapper />
           <Component {...pageProps} />
         </HydrationBoundary>
-        <ReactQueryDevtools initialIsOpen />
       </QueryClientProvider>
     </>
   );
