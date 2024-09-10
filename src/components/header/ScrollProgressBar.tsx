@@ -25,7 +25,7 @@ export default function ScrollProgressBar() {
 
   return (
     <div
-      className="fixed left-0 top-0 z-[25] h-2"
+      className="fixed left-0 top-58 z-[25] h-2"
       style={{
         width: `${width}%`,
         borderRadius: `0px 2px 0px 0px`,
