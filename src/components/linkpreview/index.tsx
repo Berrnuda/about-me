@@ -25,7 +25,7 @@ export default function LinkPreview({ url }: { url: string }) {
     <Link
       href={url}
       target="_blank"
-      className="flex h-60 w-280 justify-between gap-6 rounded-4 border border-text-secondary"
+      className="flex h-60 w-full max-w-720 justify-between gap-6 rounded-4 border border-text-secondary md:max-w-1000 xl:max-w-280"
     >
       <div className="flex h-50 flex-col overflow-y-hidden p-4">
         <h3 className="font-bold">{data.title}</h3>
