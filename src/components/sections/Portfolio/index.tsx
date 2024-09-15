@@ -78,7 +78,7 @@ function Portfolio(props: any, ref: React.Ref<HTMLDivElement>) {
           icon={ArbabaIcon}
           title="아르바바와 40인의 사장들"
           description="사장님도 알바생도 이용하는, 기존보다 높은 시급으로 알바를 빠르게 구할 수 있는 서비스"
-          skills={["Next", "TypeScript", "Recoil", "Tailwind"]}
+          skills={["Next", "TypeScript", "Axios", "Tailwind", "Recoil"]}
           onClick={ModalArbaba}
           day="24.06.21 ~ 24.07.07"
         />
