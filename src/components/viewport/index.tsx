@@ -1,17 +1,44 @@
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 type VisitCount = {
   total: number;
   today: number;
 };
 
-interface ViewPortProps {
-  initialVisitCount: VisitCount;
-}
+const fetchVisitCount = async () => {
+  const { data } = await axios.get("/api/visit");
+  return data;
+};
 
-export default function ViewPort({ initialVisitCount }: ViewPortProps) {
-  const [visitCount, setVisitCount] = useState<VisitCount>(initialVisitCount);
+const postVisitCount = async () => {
+  const { data } = await axios.post("/api/visit");
+  return data;
+};
+
+export default function ViewPort() {
+  const queryClient = useQueryClient();
+
+  // 방문자 수 GET 요청
+  const { data: visitCount } = useQuery<VisitCount>({
+    queryKey: ["visitCount"],
+    queryFn: () => fetchVisitCount(),
+    staleTime: Infinity,
+  });
+
+  // 방문자 수 POST 요청 (방문자 수 증가)
+  const mutation = useMutation({
+    mutationFn: () => postVisitCount(),
+    onMutate: async (data) => {
+      await queryClient.setQueryData(["visitCount"], data);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["visitCount"],
+      });
+    },
+  });
 
   useEffect(() => {
     const todayDate = new Date();
@@ -21,23 +48,16 @@ export default function ViewPort({ initialVisitCount }: ViewPortProps) {
     const lastVisitDate = localStorage.getItem("lastVisitDate");
 
     if (lastVisitDate !== todayString) {
-      axios
-        .post("/api/visit")
-        .then((response) => {
-          const { total, today } = response.data;
-          setVisitCount({ total, today });
-          localStorage.setItem("lastVisitDate", todayString);
-        })
-        .catch((err) => {
-          console.error("방문자 수 API 호출 실패:", err);
-        });
+      // 방문자 수를 증가시키고 로컬스토리지에 날짜 저장
+      mutation.mutate();
+      localStorage.setItem("lastVisitDate", todayString);
     }
-  }, []);
+  }, [mutation]);
 
   return (
     <div>
-      <p>전체 방문자 수: {visitCount.total}</p>
-      <p>오늘 방문자 수: {visitCount.today}</p>
+      <p>전체 방문자 수: {visitCount?.total ?? 0}</p>
+      <p>오늘 방문자 수: {visitCount?.today ?? 0}</p>
     </div>
   );
 }
