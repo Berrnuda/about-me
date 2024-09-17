@@ -1,45 +1,46 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function ViewPort() {
-  const [visitCount, setVisitCount] = useState<{ total: number; today: number }>({
-    total: 0,
-    today: 0,
-  });
+type VisitCount = {
+  total: number;
+  today: number;
+};
+
+interface ViewPortProps {
+  initialVisitCount: VisitCount;
+}
+
+export default function ViewPort({ initialVisitCount }: ViewPortProps) {
+  const [visitCount, setVisitCount] = useState<VisitCount>(initialVisitCount);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const todayDate = new Date();
-    todayDate.setHours(0, 0, 0, 0); // 오늘의 날짜 (시간 00:00:00으로 설정)
-    const todayString = todayDate.toISOString().split("T")[0]; // YYYY-MM-DD 형식으로 변환
+    todayDate.setUTCHours(0, 0, 0, 0);
+    const todayString = todayDate.toISOString().split("T")[0];
 
-    // 로컬 스토리지에서 마지막 방문 날짜 확인
     const lastVisitDate = localStorage.getItem("lastVisitDate");
 
     if (lastVisitDate !== todayString) {
-      // 방문자 수 증가시키고 전체 및 오늘 방문자 수 조회하기
+      setLoading(true);
       axios
-        .post("/api/visit") // 방문자 수 증가 요청
-        .then((response) => {
-          const { total, today } = response.data;
-          setVisitCount({ total, today }); // 서버에서 받은 total과 today 값을 설정
-          localStorage.setItem("lastVisitDate", todayString); // 오늘 방문 기록을 로컬 스토리지에 저장
-        })
-        .catch((err) => {
-          console.error("방문자 수 API 호출 실패:", err);
-        });
-    } else {
-      // 이미 방문한 경우에는 방문자 수 조회만 수행
-      axios
-        .get("/api/visit")
+        .post("/api/visit")
         .then((response) => {
           const { total, today } = response.data;
           setVisitCount({ total, today });
+          localStorage.setItem("lastVisitDate", todayString);
+          setLoading(false);
         })
         .catch((err) => {
-          console.error("방문자 수 조회 실패:", err);
+          console.error("방문자 수 API 호출 실패:", err);
+          setLoading(false);
         });
     }
   }, []);
+
+  if (loading) {
+    return <p>로딩 중...</p>;
+  }
 
   return (
     <div>

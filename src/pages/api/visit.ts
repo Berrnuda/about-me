@@ -1,4 +1,3 @@
-// pages/api/visit.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import clientPromise from "../../utils/mongodb";
 
@@ -9,8 +8,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const collection = db.collection("visits");
 
+    // UTC 기준으로 오늘 날짜 설정
     const todayDate = new Date();
-    todayDate.setHours(0, 0, 0, 0); // 오늘의 날짜만 추출
+    todayDate.setUTCHours(0, 0, 0, 0);
 
     if (req.method === "POST") {
       // 전체 방문자 수 증가

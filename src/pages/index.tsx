@@ -7,9 +7,48 @@ import Portfolio from "@/components/sections/Portfolio";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
 import ViewPort from "@/components/viewport";
+import axios from "axios";
+import { GetServerSideProps } from "next";
 import { useEffect, useRef, useState } from "react";
 
-export default function Home() {
+type VisitCount = {
+  total: number;
+  today: number;
+};
+
+interface ViewPortProps {
+  initialVisitCount: VisitCount;
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const uri = process.env.NEXT_PUBLIC_SITE_URL;
+
+  try {
+    const response = await axios.get(`${uri}/api/visit`);
+    const { total, today } = response.data;
+
+    return {
+      props: {
+        initialVisitCount: {
+          total,
+          today,
+        },
+      },
+    };
+  } catch (error) {
+    console.error("방문자 수 가져오기 실패:", error);
+    return {
+      props: {
+        initialVisitCount: {
+          total: 0,
+          today: 0,
+        },
+      },
+    };
+  }
+};
+
+export default function Home({ initialVisitCount }: ViewPortProps) {
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   const introductionRef = useRef<HTMLDivElement | null>(null);
@@ -75,7 +114,7 @@ export default function Home() {
         <Portfolio ref={portfolioRef} />
         <Education ref={educationRef} />
       </main>
-      <ViewPort />
+      <ViewPort initialVisitCount={initialVisitCount} />
     </div>
   );
 }
