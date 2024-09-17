@@ -6,6 +6,7 @@ import Introduction from "@/components/sections/Introduction";
 import Portfolio from "@/components/sections/Portfolio";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
+import ViewPort from "@/components/viewport";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
@@ -74,6 +75,7 @@ export default function Home() {
         <Portfolio ref={portfolioRef} />
         <Education ref={educationRef} />
       </main>
+      <ViewPort />
     </div>
   );
 }
