@@ -55,7 +55,7 @@ export default function ViewPort() {
   }, [mutation]);
 
   return (
-    <div>
+    <div className="mb-60">
       <p>전체 방문자 수: {visitCount?.total ?? 0}</p>
       <p>오늘 방문자 수: {visitCount?.today ?? 0}</p>
     </div>

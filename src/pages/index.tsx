@@ -75,7 +75,6 @@ export default function Home() {
         <Portfolio ref={portfolioRef} />
         <Education ref={educationRef} />
       </main>
-      <ViewPort />
     </div>
   );
 }
