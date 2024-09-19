@@ -18,7 +18,7 @@ export default function ProgressBar({ title, percent }: { title: string; percent
         clearInterval(interval);
         setIsAnimating(false);
       }
-    }, 3000 / percent);
+    }, 1500 / percent);
   };
 
   useEffect(() => {
@@ -34,8 +34,9 @@ export default function ProgressBar({ title, percent }: { title: string; percent
       <div className="flex h-16 w-[90%] flex-col justify-center rounded-4 bg-[#333333] px-1">
         <div
           style={{
+            minWidth: "45px",
             width: `${currentPercent}%`,
-            transition: "width 0.03s ease-in-out",
+            transition: "width 0.01s ease-in-out",
           }}
         >
           <div className="from-customFirst to-customSecond flex h-16 items-center justify-end rounded-4 bg-gradient-to-r">
