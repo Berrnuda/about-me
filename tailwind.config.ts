@@ -28,6 +28,12 @@ const config: Config = {
         default: "#c3c7cc",
       },
     },
+    extend: {
+      colors: {
+        customFirst: "#F39C12",
+        customSecond: "#E74C3C",
+      },
+    },
   },
   plugins: [
     function ({ addUtilities }: PluginAPI) {
