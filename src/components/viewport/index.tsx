@@ -56,8 +56,8 @@ export default function ViewPort() {
 
   return (
     <div className="mb-60">
-      <p>전체 방문자 수: {visitCount?.total ?? 0}</p>
-      <p>오늘 방문자 수: {visitCount?.today ?? 0}</p>
+      <p>total: {visitCount?.total ?? 0}</p>
+      <p>today: {visitCount?.today ?? 0}</p>
     </div>
   );
 }
