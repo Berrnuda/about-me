@@ -70,14 +70,13 @@ export default function ArbabaModal({ onClose }: { onClose?: () => void }) {
             <div className="flex flex-col gap-4 md:gap-8">
               <p className="text-xl font-bold md:text-3xl">프로젝트 소개</p>
               <ul>
-                <li>- 코드잇에서 진행한 프로젝트 입니다.</li>
                 <li>
                   - 급하게 일손이 필요한 자리에 더 많은 시급을 제공해서 아르바이트생을 구할 수 있는
                   서비스입니다.
                 </li>
                 <li>
-                  - 총 세번의 프로젝트중 두번째 프로젝트로, 제공된 프로젝트중에서 난이도는
-                  중간이었지만 경험삼을게 많다 생각하여 고르게 되었습니다.
+                  - 제공된 프로젝트중에서 난이도는 중간이었지만 경험삼을게 많다 생각하여 고르게
+                  되었습니다.
                 </li>
                 <li>
                   - 프로젝트중 객체에 대한 pr을 올리고 팀원들의 긍정적인 코드리뷰를 받고나서 객체를

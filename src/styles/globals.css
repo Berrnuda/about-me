@@ -70,3 +70,7 @@ html:active,
     @apply bottom-0 left-1/2 max-h-screen w-full -translate-x-1/2 overflow-x-hidden;
   }
 }
+
+pre > p {
+  color: #bbbed6;
+}

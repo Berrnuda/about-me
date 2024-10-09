@@ -65,11 +65,13 @@ export default function OpenMindModal({ onClose }: { onClose?: () => void }) {
             <div className="flex flex-col gap-4 md:gap-8">
               <p className="text-xl font-bold md:text-3xl">프로젝트 소개</p>
               <ul>
-                <li>- 코드잇에서 진행한 프로젝트로 리스트페이지를 담당하였습니다.</li>
                 <li>- 질문과 답변을 통해 마음을 열고 대화를 나누는 소통 플랫폼 입니다.</li>
                 <li>
                   - api, 페이지네이션, 로컬스토리지, 무한스크롤 등 라이브러리들과 협업을 경험해보기
                   위한 첫 기초 프로젝트 입니다.
+                </li>
+                <li>
+                  - 팀장을 맡았던 프로젝트로 프로젝트 초기 기획의 중요성을 깨달았던 프로젝트 입니다.
                 </li>
               </ul>
             </div>

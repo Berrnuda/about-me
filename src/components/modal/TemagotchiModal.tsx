@@ -74,14 +74,13 @@ export default function TemagotchiModal({ onClose }: { onClose?: () => void }) {
             <div className="flex flex-col gap-4 md:gap-8">
               <p className="text-xl font-bold md:text-3xl">프로젝트 소개</p>
               <ul>
-                <li>- 코드잇에서 진행한 프로젝트 입니다.</li>
                 <li>
                   - 팀을 생성하고 팀원을 구성하여 공통의 할 일을 만들어서 업무의 효율을 높이는
                   프로젝트입니다.
                 </li>
                 <li>
-                  - 총 세번의 프로젝트중 마지막 프로젝트로, 다른 프로젝트들과 비교했을때 배울점이
-                  많고 실제로 사용할 수 있는 프로젝트가 될수있을것 같아서 선정하게 되었습니다.
+                  - 다른 프로젝트들과 비교했을때 배울점이 많고 실제로 사용할 수 있는 프로젝트가
+                  될수있을것 같아서 선정하게 되었습니다.
                 </li>
               </ul>
             </div>
@@ -120,6 +119,169 @@ export default function TemagotchiModal({ onClose }: { onClose?: () => void }) {
                   └ 상세보기 페이지와 사이드바의 싱크를 맞추기 위해 컴포넌트 단에서 관리되던 상태를
                   페이지로 올려 각각의 props로 전달해주고, React-Query의 invalidateQueries를 이용해
                   다른 컴포넌트들과 공통적으로 쓰이는 데이터들을 서버최신의 데이터로 갱신시켰습니다.
+                </li>
+              </ul>
+            </div>
+            <div className="flex flex-col gap-4 md:gap-8">
+              <p className="text-xl font-bold md:text-3xl">트러블 슈팅</p>
+              <ul>
+                <li>- SSR 도중 토큰을 가져오지 못하는 문제</li>
+                <li className="ml-10">
+                  └ 문제 : 토큰을 쿠키로 관리하는데 SSR 환경에서 API 호출을 할때 axios 인터셉터가
+                  쿠키에 접근을 못하여 좋아요를 눌렀는지 안눌렀는지를 토큰으로 판단하는 페이지에서
+                  정보를 못가져옴
+                </li>
+                <li className="ml-10">
+                  └ 원인 추론 : 쿠키 대신 로컬스토리지를 이용해도 똑같은 결과가 나옴 <br />
+                  CSR 환경에서는 인터셉터에서 쿠키를 잘 가져오는것으로 보아 SSR 환경에서 문제가
+                  있는것으로 판단 <br />
+                </li>
+                <li className="ml-10">
+                  └ 해결 : SSR 환경에서는 브라우저에 접근할 수 없으니 context를 이용하여 직접 쿠키를
+                  가져오고 API 호출 함수에 토큰을 추가하여 config로 보내는것으로 해결
+                </li>
+                <li className="ml-10 mt-10">
+                  <pre className="overflow-x-auto rounded-lg border border-[#374151] bg-[#1F2937] p-4 text-sm">
+                    <p>
+                      <span className="text-pre-sky">export</span>{" "}
+                      <span className="text-pre-function">const</span>{" "}
+                      <span className="text-pre-blue">getServerSideProps</span>
+                      <span className="text-pre-sky">:</span>{" "}
+                      <span className="text-pre-orange">GetServerSideProps</span>{" "}
+                      <span className="text-pre-sky">=</span>{" "}
+                      <span className="text-pre-function">async</span>{" "}
+                      <span className="text-pre-paren">(</span>context
+                      <span className="text-pre-paren">)</span>{" "}
+                      <span className="text-pre-function">={">"}</span>{" "}
+                      <span className="text-pre-paren">
+                        {"{"}
+                        <br />
+                      </span>
+                      <span className="text-pre-function">&nbsp;&nbsp;const</span> token{" "}
+                      <span className="text-pre-sky">=</span> context
+                      <span className="text-pre-sky">.</span>req.cookies
+                      <span className="text-pre-yellow">[</span>
+                      <span className="text-pre-sky">&#34;</span>
+                      <span className="text-pre-string">accessToken</span>
+                      <span className="text-pre-sky">&#34;</span>
+                      <span className="text-pre-yellow">]</span>
+                      <span className="text-pre-sky">
+                        ;<br />
+                        <br />
+                      </span>
+                      <span className="text-pre-sky">&nbsp;&nbsp;await</span> queryClient
+                      <span className="text-pre-sky">.</span>
+                      <span className="text-pre-blue">fetchQuery</span>
+                      <span className="text-pre-red">(</span>
+                      <span className="text-pre-paren">
+                        {"{"}
+                        <br />
+                      </span>
+                      &nbsp;&nbsp;&nbsp;&nbsp;queryKey
+                      <span className="text-pre-sky">:</span>{" "}
+                      <span className="text-pre-yellow">[</span>
+                      <span className="text-pre-sky">&#34;</span>
+                      <span className="text-pre-string">article</span>
+                      <span className="text-pre-sky">&#34;</span>
+                      <span className="text-pre-sky">,</span> boardId
+                      <span className="text-pre-yellow">]</span>
+                      <span className="text-pre-sky">
+                        ,<br />
+                      </span>
+                      <span className="text-pre-blue">&nbsp;&nbsp;&nbsp;&nbsp;queryFn</span>
+                      <span className="text-pre-sky">:</span>{" "}
+                      <span className="text-pre-yellow">()</span>{" "}
+                      <span className="text-pre-function">={">"}</span>{" "}
+                      <span className="text-pre-blue">getArticle</span>
+                      <span className="text-pre-yellow">(</span>boardId{" "}
+                      <span className="text-pre-sky">as</span>{" "}
+                      <span className="text-pre-orange">string</span>
+                      <span className="text-pre-sky">,</span> token
+                      <span className="text-pre-yellow">)</span>
+                      <span className="text-pre-sky">
+                        ,<br />
+                      </span>
+                      &nbsp;&nbsp;&nbsp;&nbsp;staleTime
+                      <span className="text-pre-sky">
+                        : Infinity,
+                        <br />
+                      </span>
+                      <span className="text-pre-paren">&nbsp;&nbsp;{"}"}</span>
+                      <span className="text-pre-red">)</span>
+                      <span className="text-pre-sky">
+                        ;<br />
+                      </span>
+                      <span className="text-pre-paren">{"}"}</span>
+                      <span className="text-pre-sky">
+                        ;
+                        <br />
+                        <br />
+                      </span>
+                      <span className="text-pre-sky">export</span>{" "}
+                      <span className="text-pre-function">const</span>{" "}
+                      <span className="text-pre-blue">getArticle</span>{" "}
+                      <span className="text-pre-sky">=</span>{" "}
+                      <span className="text-pre-function">async</span>{" "}
+                      <span className="text-pre-paren">(</span>articleId
+                      <span className="text-pre-sky">:</span>{" "}
+                      <span className="text-pre-orange">string</span>
+                      <span className="text-pre-sky">,</span> token
+                      <span className="text-pre-sky">?:</span>{" "}
+                      <span className="text-pre-orange">string</span>
+                      <span className="text-pre-paren">)</span>
+                      <span className="text-pre-sky">:</span>{" "}
+                      <span className="text-pre-orange">{"Promise<ArticleDetails>"}</span>{" "}
+                      <span className="text-pre-function">={">"}</span>{" "}
+                      <span className="text-pre-paren">
+                        {"{"}
+                        <br />
+                      </span>
+                      <span className="text-pre-function">&nbsp;&nbsp;const</span> headers{" "}
+                      <span className="text-pre-sky">=</span>{" "}
+                      <span>
+                        {"{"}
+                        <br />
+                      </span>
+                      &nbsp;&nbsp;&nbsp;&nbsp;Authorization
+                      <span className="text-pre-sky">: `</span>
+                      <span className="text-pre-string">Bearer</span>{" "}
+                      <span className="text-pre-sky">${"{"}</span>token
+                      <span className="text-pre-sky">
+                        {"}`,"}
+                        <br />
+                      </span>
+                      <span className="text-pre-paren">&nbsp;&nbsp;{"}"}</span>
+                      <span className="text-pre-sky">
+                        ;<br />
+                        <br />
+                      </span>
+                      <span className="text-pre-function">&nbsp;&nbsp;const</span> response{" "}
+                      <span className="text-pre-sky">= await</span> axiosInstance
+                      <span className="text-pre-sky">.</span>
+                      <span className="text-pre-blue">get</span>
+                      <span className="text-pre-function">{"<"}</span>
+                      <span className="text-pre-orange">ArticleDetails</span>
+                      <span className="text-pre-function">{">"}</span>
+                      <span className="text-pre-yellow">(</span>
+                      <span className="text-pre-sky">`</span>
+                      <span className="text-pre-string">articles/</span>
+                      <span className="text-pre-sky">{"${"}</span>articleId
+                      <span className="text-pre-sky">{"}`,"}</span>{" "}
+                      <span className="text-pre-red">{"{"}</span> headers{" "}
+                      <span className="text-pre-red">{"}"}</span>
+                      <span className="text-pre-yellow">)</span>
+                      <span className="text-pre-sky">
+                        ;<br />
+                      </span>
+                      <span className="text-pre-sky">&nbsp;&nbsp;return</span> response
+                      <span className="text-pre-sky">.</span>data
+                      <span className="text-pre-sky">
+                        ;<br />
+                      </span>
+                      <span className="text-pre-paren">{"}"}</span>
+                      <span className="text-pre-sky">;</span>
+                    </p>
+                  </pre>
                 </li>
               </ul>
             </div>

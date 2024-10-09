@@ -27,6 +27,18 @@ const config: Config = {
         secondary: "#6f7277",
         default: "#c3c7cc",
       },
+      pre: {
+        sky: "#9CDBFB",
+        function: "#BF94E4",
+        blue: "#8AA9F9",
+        orange: "#F7CD7A",
+        yellow: "#EFEF52",
+        string: "#CAE797",
+        paren: "#377E7F",
+        red: "#ED6C52",
+        gray: "#BBBED6",
+        pink: "#F1A1AD",
+      },
     },
     extend: {
       colors: {
