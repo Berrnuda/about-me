@@ -142,7 +142,7 @@ export default function TemagotchiModal({ onClose }: { onClose?: () => void }) {
                 </li>
                 <li className="ml-10 mt-10">
                   <pre className="overflow-x-auto rounded-lg border border-[#374151] bg-[#1F2937] p-4 text-sm">
-                    <p>
+                    <code>
                       <span className="text-pre-sky">export</span>{" "}
                       <span className="text-pre-function">const</span>{" "}
                       <span className="text-pre-blue">getServerSideProps</span>
@@ -280,7 +280,7 @@ export default function TemagotchiModal({ onClose }: { onClose?: () => void }) {
                       </span>
                       <span className="text-pre-paren">{"}"}</span>
                       <span className="text-pre-sky">;</span>
-                    </p>
+                    </code>
                   </pre>
                 </li>
               </ul>
