@@ -10,7 +10,7 @@ import ArbabaModal from "@/components/modal/ArbabaModal";
 import { useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
-function Portfolio(props: any, ref: React.Ref<HTMLDivElement>) {
+function Projects(props: any, ref: React.Ref<HTMLDivElement>) {
   const { openModal } = useModalStore();
   const queryClient = useQueryClient();
 
@@ -60,11 +60,11 @@ function Portfolio(props: any, ref: React.Ref<HTMLDivElement>) {
 
   return (
     <div
-      id="portfolio"
+      id="Projects"
       ref={ref}
       className="mb-60 min-h-screen scroll-mt-59 border-t border-b-text-secondary p-4 md:p-8 xl:mb-0 xl:p-12"
     >
-      <h2 className="text-xl font-semibold md:text-2xl xl:text-3xl">포트폴리오</h2>
+      <h2 className="text-xl font-semibold md:text-2xl xl:text-3xl">프로젝트</h2>
       <div className="mt-10 grid gap-6 md:mt-20 md:grid-cols-2 xl:mt-40 xl:grid-cols-3">
         <PortfolioCard
           icon={OpenMindIcon}
@@ -104,4 +104,4 @@ function Portfolio(props: any, ref: React.Ref<HTMLDivElement>) {
   );
 }
 
-export default forwardRef(Portfolio);
+export default forwardRef(Projects);

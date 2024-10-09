@@ -3,10 +3,9 @@ import ScrollProgressBar from "@/components/header/ScrollProgressBar";
 import Education from "@/components/sections/Education";
 // import Experience from "@/components/sections/Experience";
 import Introduction from "@/components/sections/Introduction";
-import Portfolio from "@/components/sections/Portfolio";
 import Projects from "@/components/sections/Projects";
+// import Projects from "@/components/sections/Projects_";
 import Skills from "@/components/sections/Skills";
-import ViewPort from "@/components/viewport";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
@@ -16,7 +15,7 @@ export default function Home() {
   const skillsRef = useRef<HTMLDivElement | null>(null);
   // const experienceRef = useRef<HTMLDivElement | null>(null);
   const projectsRef = useRef<HTMLDivElement | null>(null);
-  const portfolioRef = useRef<HTMLDivElement | null>(null);
+  // const portfolioRef = useRef<HTMLDivElement | null>(null);
   const educationRef = useRef<HTMLDivElement | null>(null);
 
   const sectionRefs = [
@@ -24,7 +23,7 @@ export default function Home() {
     { id: "skills", ref: skillsRef },
     // { id: "experience", ref: experienceRef },
     { id: "projects", ref: projectsRef },
-    { id: "portfolio", ref: portfolioRef },
+    // { id: "portfolio", ref: portfolioRef },
     { id: "education", ref: educationRef },
   ];
 
@@ -71,8 +70,8 @@ export default function Home() {
         <Introduction ref={introductionRef} />
         <Skills ref={skillsRef} />
         {/* <Experience ref={experienceRef} /> */}
+        {/* <Projects ref={projectsRef} /> */}
         <Projects ref={projectsRef} />
-        <Portfolio ref={portfolioRef} />
         <Education ref={educationRef} />
       </main>
     </div>

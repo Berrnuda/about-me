@@ -39,7 +39,7 @@ export default function ProgressBar({ title, percent }: { title: string; percent
             transition: "width 0.01s ease-in-out",
           }}
         >
-          <div className="from-customFirst to-customSecond flex h-16 items-center justify-end rounded-4 bg-gradient-to-r">
+          <div className="flex h-16 items-center justify-end rounded-4 bg-gradient-to-r from-customFirst to-customSecond">
             <span className="mr-10 text-[#000]">{currentPercent} %</span> {/* 숫자 증가 */}
           </div>
         </div>
