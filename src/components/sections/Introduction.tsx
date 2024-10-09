@@ -31,7 +31,7 @@ function Introduction(props: any, ref: React.ForwardedRef<HTMLDivElement>) {
                 Velog
               </Link>
             </div>
-            <p className="text-sm md:text-base">MBTI: ISTP</p>
+            {/* <p className="text-sm md:text-base">MBTI: ISTP</p> */}
             <p className="text-sm md:text-base">Tel: +82 10-8072-4389</p>
             <p className="text-sm md:text-base">e-Mail: jeeee_in@naver.com</p>
           </div>
