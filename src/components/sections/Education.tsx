@@ -6,13 +6,17 @@ function Education(props: any, ref: React.Ref<HTMLDivElement>) {
     <div
       id="education"
       ref={ref}
-      className="h-screen scroll-mt-59 border-t border-b-text-secondary p-8 flex flex-col"
+      className="flex h-screen scroll-mt-59 flex-col border-t border-b-text-secondary p-8"
     >
       <h2 className="text-2xl font-semibold">교육</h2>
-      <div className="mt-40 flex-grow flex flex-col gap-8">
+      <div className="mt-40 flex flex-grow flex-col gap-8">
         <p className="text-2xl">코드잇</p>
         <p>코드잇 스프린트 프론트엔드 6기</p>
         <p>24.03.07 ~ 24.09.02</p>
+
+        <p className="mt-20 text-2xl">스터디</p>
+        <p>leetcode-study</p>
+        <p>24.09.24 ~ </p>
       </div>
       {/* ViewPort는 항상 하단에 위치하게 됨 */}
       <ViewPort />
