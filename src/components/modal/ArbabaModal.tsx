@@ -7,6 +7,7 @@ import SkillTailwind from "../skill/Tailwind";
 import SkillRecoil from "../skill/Recoil";
 import ArbabaIcon from "/public/images/arbaba.png";
 import LinkPreview from "../linkpreview";
+import { PreviewData } from "@/pages";
 
 const skillComponents: { [key: string]: JSX.Element } = {
   Next: <SkillNext />,
@@ -16,7 +17,13 @@ const skillComponents: { [key: string]: JSX.Element } = {
   Recoil: <SkillRecoil />,
 };
 
-export default function ArbabaModal({ onClose }: { onClose?: () => void }) {
+export default function ArbabaModal({
+  onClose,
+  previews,
+}: {
+  onClose?: () => void;
+  previews?: PreviewData[];
+}) {
   const skillList = Object.keys(skillComponents);
 
   return (
@@ -62,9 +69,10 @@ export default function ArbabaModal({ onClose }: { onClose?: () => void }) {
             <div className="flex flex-col gap-4 md:gap-8">
               <p className="text-xl font-bold md:text-3xl">Link</p>
               <div className="flex flex-wrap gap-6 md:gap-8">
-                <LinkPreview url="https://github.com/sprint6-team12/arbaba-40owners" />
+                {/* <LinkPreview url="https://github.com/sprint6-team12/arbaba-40owners" />
                 <LinkPreview url="https://tan-maize-34b.notion.site/part3-12-2e36b18474754374ba9640bd24dac669?pvs=74" />
-                <LinkPreview url="https://the-julge-6-12.vercel.app" />
+                <LinkPreview url="https://the-julge-6-12.vercel.app" /> */}
+                {previews?.map((preview, index) => <LinkPreview data={preview} key={index} />)}
               </div>
             </div>
             <div className="flex flex-col gap-4 md:gap-8">

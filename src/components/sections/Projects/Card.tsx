@@ -28,7 +28,7 @@ const skillComponents: { [key: string]: JSX.Element } = {
   ClassNames: <SkillClassNames />,
 };
 
-type SkillType =
+export type SkillType =
   | "React"
   | "Axios"
   | "Tailwind"

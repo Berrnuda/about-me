@@ -10,6 +10,7 @@ import SkillTypeScript from "../skill/TypeScript";
 import SkillZustand from "../skill/Zustand";
 import CustomModal from "./CustomModal";
 import TemagotchiIcon from "/public/images/Temagotchi.ico";
+import { PreviewData } from "@/pages";
 
 const skillComponents: { [key: string]: JSX.Element } = {
   Next: <SkillNext />,
@@ -22,7 +23,13 @@ const skillComponents: { [key: string]: JSX.Element } = {
   classNames: <SkillClassNames />,
 };
 
-export default function TemagotchiModal({ onClose }: { onClose?: () => void }) {
+export default function TemagotchiModal({
+  onClose,
+  previews,
+}: {
+  onClose?: () => void;
+  previews?: PreviewData[];
+}) {
   const skillList = Object.keys(skillComponents);
 
   return (
@@ -66,9 +73,10 @@ export default function TemagotchiModal({ onClose }: { onClose?: () => void }) {
             <div className="flex flex-col gap-4 md:gap-8">
               <p className="text-xl font-bold md:text-3xl">Link</p>
               <div className="flex flex-wrap gap-6 md:gap-8">
-                <LinkPreview url="https://github.com/Codeit-Sprint-6th-Part-4-Team-6/Teamagotchi" />
+                {/* <LinkPreview url="https://github.com/Codeit-Sprint-6th-Part-4-Team-6/Teamagotchi" />
                 <LinkPreview url="https://copper-garlic-708.notion.site/4-6-1a606fabfbf64b7194551d0321f984eb?pvs=74" />
-                <LinkPreview url="https://teamagotchi.netlify.app" />
+                <LinkPreview url="https://teamagotchi.netlify.app" /> */}
+                {previews?.map((preview, index) => <LinkPreview data={preview} key={index} />)}
               </div>
             </div>
             <div className="flex flex-col gap-4 md:gap-8">

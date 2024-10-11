@@ -6,6 +6,7 @@ import SkillJavaScript from "../skill/JavaScript";
 import SkillCss from "../skill/Css";
 import SkillAxios from "../skill/Axios";
 import LinkPreview from "../linkpreview";
+import { PreviewData } from "@/pages";
 
 const skillComponents: { [key: string]: JSX.Element } = {
   React: <SkillReact />,
@@ -14,7 +15,13 @@ const skillComponents: { [key: string]: JSX.Element } = {
   Axios: <SkillAxios />,
 };
 
-export default function OpenMindModal({ onClose }: { onClose?: () => void }) {
+export default function OpenMindModal({
+  onClose,
+  previews,
+}: {
+  onClose?: () => void;
+  previews?: PreviewData[];
+}) {
   const skillList = Object.keys(skillComponents);
 
   return (
@@ -57,9 +64,10 @@ export default function OpenMindModal({ onClose }: { onClose?: () => void }) {
             <div className="flex flex-col gap-4 md:gap-8">
               <p className="text-xl font-bold md:text-3xl">Link</p>
               <div className="flex flex-wrap gap-6 md:gap-8">
-                <LinkPreview url="https://github.com/12Team-Project/git12Team" />
+                {/* <LinkPreview url="https://github.com/12Team-Project/git12Team" />
                 <LinkPreview url="https://broken-princess-732.notion.site/12-47d7f99cca2d45edbdb711cedfec0f42?pvs=74" />
-                <LinkPreview url="https://open-mind-12team.netlify.app" />
+                <LinkPreview url="https://open-mind-12team.netlify.app" /> */}
+                {previews?.map((preview, index) => <LinkPreview data={preview} key={index} />)}
               </div>
             </div>
             <div className="flex flex-col gap-4 md:gap-8">
