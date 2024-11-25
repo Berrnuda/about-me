@@ -11,8 +11,8 @@ import SkillZustand from "../skill/Zustand";
 import CustomModal from "./CustomModal";
 import TemagotchiIcon from "/public/images/Temagotchi.ico";
 import { PreviewData } from "@/pages";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism"; // 'esm' -> 'cjs'로 변경
+// import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+// import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
 const skillComponents: { [key: string]: JSX.Element } = {
@@ -349,14 +349,15 @@ export const getArticle = async (
                       <span className="text-pre-sky">;</span>
                     </code>
                   </pre> */}
-                  <SyntaxHighlighter
+                  {/* <SyntaxHighlighter
                     language={"typescript"}
                     style={coldarkDark}
-                    wrapLongLines
                     showLineNumbers
+                    wrapLongLines
+                    className="overflow-auto whitespace-pre-wrap break-words"
                   >
                     {codeString}
-                  </SyntaxHighlighter>
+                  </SyntaxHighlighter> */}
                 </li>
               </ul>
             </div>
