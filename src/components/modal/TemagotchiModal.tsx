@@ -11,6 +11,9 @@ import SkillZustand from "../skill/Zustand";
 import CustomModal from "./CustomModal";
 import TemagotchiIcon from "/public/images/Temagotchi.ico";
 import { PreviewData } from "@/pages";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism"; // 'esm' -> 'cjs'로 변경
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 const skillComponents: { [key: string]: JSX.Element } = {
   Next: <SkillNext />,
@@ -31,6 +34,62 @@ export default function TemagotchiModal({
   previews?: PreviewData[];
 }) {
   const skillList = Object.keys(skillComponents);
+  const { isDesktop } = useMediaQuery();
+
+  const codeStringDesktop = `export const getServerSideProps: GetServerSideProps = async (context) => {
+  const token = context.req.cookies["accessToken"];
+
+  await queryClient.fetchQuery({
+    queryKey: ["article", boardId],
+    queryFn: () => getArticle(boardId as string, token),
+    staleTime: Infinity,
+  });
+};
+
+export const getArticle = async (articleId: string, token?: string): Promise<ArticleDetails> => {
+  const headers = {
+    Authorization: \`Bearer \${token}\`,
+  };
+
+  const response = await axiosInstance.get<ArticleDetails>(\`articles/\${articleId}\`, { headers });
+  return response.data;
+};
+`;
+
+  const codeStringMobile = `export const getServerSideProps: 
+  GetServerSideProps = async (context) => {
+  const token = 
+    context.req.cookies["accessToken"];
+
+  await queryClient.fetchQuery({
+    queryKey: ["article", boardId],
+    queryFn: () =>
+      getArticle(
+        boardId as string,
+        token
+      ),
+    staleTime: Infinity,
+  });
+};
+
+export const getArticle = async (
+  articleId: string,
+  token?: string
+): Promise<ArticleDetails> => {
+  const headers = {
+    Authorization: \`Bearer \${token}\`,
+  };
+
+  const response = 
+    await axios.get<ArticleDetails>(
+      \`articles/\${articleId}\`,
+      { headers }
+    );
+  return response.data;
+};
+`;
+
+  const codeString = isDesktop ? codeStringDesktop : codeStringMobile;
 
   return (
     <CustomModal
@@ -149,7 +208,7 @@ export default function TemagotchiModal({
                   가져오고 API 호출 함수에 토큰을 추가하여 config로 보내는것으로 해결
                 </li>
                 <li className="ml-10 mt-10">
-                  <pre className="overflow-x-auto rounded-lg border border-[#374151] bg-[#1F2937] p-4 text-sm">
+                  {/* <pre className="overflow-x-auto whitespace-pre-wrap break-words rounded-lg border border-[#374151] bg-[#1F2937] p-4 text-sm">
                     <code>
                       <span className="text-pre-sky">export</span>{" "}
                       <span className="text-pre-function">const</span>{" "}
@@ -289,7 +348,15 @@ export default function TemagotchiModal({
                       <span className="text-pre-paren">{"}"}</span>
                       <span className="text-pre-sky">;</span>
                     </code>
-                  </pre>
+                  </pre> */}
+                  <SyntaxHighlighter
+                    language={"typescript"}
+                    style={coldarkDark}
+                    wrapLongLines
+                    showLineNumbers
+                  >
+                    {codeString}
+                  </SyntaxHighlighter>
                 </li>
               </ul>
             </div>
