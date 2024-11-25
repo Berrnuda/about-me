@@ -10,7 +10,7 @@ function Education(props: any, ref: React.Ref<HTMLDivElement>) {
     >
       <h2 className="text-2xl font-semibold">교육</h2>
       <div className="mt-40 flex flex-grow flex-col gap-8">
-        <p className="text-2xl">코드잇</p>
+        <p className="text-2xl">부트캠프</p>
         <p>코드잇 스프린트 프론트엔드 6기</p>
         <p>24.03.07 ~ 24.09.02</p>
 
