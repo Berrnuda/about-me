@@ -42,9 +42,11 @@ export default function ViewPort() {
 
   useEffect(() => {
     const todayDate = new Date();
-    todayDate.setUTCHours(0, 0, 0, 0);
-    const todayString = todayDate.toISOString().split("T")[0];
 
+    todayDate.setHours(todayDate.getHours() + 9); // UTC+9 적용
+    todayDate.setUTCHours(0, 0, 0, 0);
+
+    const todayString = todayDate.toISOString().split("T")[0];
     const lastVisitDate = localStorage.getItem("lastVisitDate");
 
     if (lastVisitDate !== todayString) {
